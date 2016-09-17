@@ -26,6 +26,10 @@ public class RoleItemAdapter extends BaseAdapter {
         totalPlayerNumberView.setText(String.valueOf(totalPlayers));
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
     @Override
     public int getCount() {
         return roles.size();

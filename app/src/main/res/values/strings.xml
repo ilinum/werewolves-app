@@ -6,4 +6,5 @@
     <string name="start_button">START</string>
     <string name="plus">+</string>
     <string name="minus">-</string>
+    <string name="next_button">Next</string>
 </resources>
