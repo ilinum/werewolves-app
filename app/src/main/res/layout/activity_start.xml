@@ -14,48 +14,44 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/werewolvesGameText"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:text="@string/werewolves" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/werewolvesGameText"
+        android:orientation="horizontal"
+        android:id="@+id/playersTotal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/total_players"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/zero"
+            android:paddingLeft="10dp"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/startButton"
+        android:layout_alignParentBottom="true"
+        android:text="@string/start_button"/>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/werewolvesGameText"
+        android:layout_below="@id/playersTotal"
+        android:layout_above="@id/startButton"
         android:id="@+id/roleList">
     </ListView>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignParentBottom="true">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:id="@+id/playersTotal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/total_players"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/zero"
-                android:paddingLeft="10dp"
-                tools:ignore="RtlHardcoded,RtlSymmetry" />
-        </LinearLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/startButton"
-            android:text="@string/start_button"/>
-    </LinearLayout>
 
 </RelativeLayout>
