@@ -36,6 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/rolePlayers"
                 android:text="@string/zero"/>
             <Button
                 android:layout_width="wrap_content"

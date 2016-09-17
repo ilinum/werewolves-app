@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,10 +16,14 @@ import java.util.List;
 public class RoleItemAdapter extends BaseAdapter {
     private final LayoutInflater inflater;
     private List<Role> roles;
+    private TextView totalPlayersView;
+    private int totalPlayers = 0;
 
-    public RoleItemAdapter(Context context, List<Role> roles) {
+    public RoleItemAdapter(Context context, List<Role> roles, TextView totalPlayerNumberView) {
         this.roles = roles;
         inflater = LayoutInflater.from(context);
+        this.totalPlayersView = totalPlayerNumberView;
+        totalPlayerNumberView.setText(String.valueOf(totalPlayers));
     }
 
     @Override
@@ -46,24 +51,62 @@ public class RoleItemAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.role_item, parent, false);
             TextView nameView = (TextView) convertView.findViewById(R.id.name);
             TextView descriptionView = (TextView) convertView.findViewById(R.id.description);
-            convertView.setTag(new RoleViewHolder(nameView, descriptionView));
+            TextView rolePlayersView = (TextView) convertView.findViewById(R.id.rolePlayers);
+            Button minusButton = (Button) convertView.findViewById(R.id.minusButton);
+            Button plusButton = (Button) convertView.findViewById(R.id.plusButton);
+            RoleViewHolder holder = new RoleViewHolder(nameView, descriptionView, rolePlayersView, minusButton, plusButton);
+            convertView.setTag(holder);
         }
         bindView(((RoleViewHolder) convertView.getTag()), role);
         return convertView;
     }
 
-    private void bindView(RoleViewHolder vh, Role role) {
+    private void bindView(final RoleViewHolder vh, final Role role) {
         vh.name.setText(role.name);
         vh.description.setText(role.description);
+        vh.numPlayers.setText(String.valueOf(role.getPlayers()));
+        vh.minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int oldValue = role.getPlayers();
+                role.removePlayer();
+                int newValue = role.getPlayers();
+                updateTotalPlayersView(oldValue, newValue);
+                vh.numPlayers.setText(String.valueOf(newValue));
+            }
+        });
+        vh.plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int oldValue = role.getPlayers();
+                role.addPlayer();
+                int newValue = role.getPlayers();
+                updateTotalPlayersView(oldValue, newValue);
+                vh.numPlayers.setText(String.valueOf(newValue));
+            }
+        });
+    }
+
+    private void updateTotalPlayersView(int oldValue, int newValue) {
+        if (oldValue != newValue) {
+            totalPlayers += newValue - oldValue;
+            totalPlayersView.setText(String.valueOf(totalPlayers));
+        }
     }
 
     private static class RoleViewHolder {
-        public TextView name;
-        public TextView description;
+        public final Button minusButton;
+        public final Button plusButton;
+        public final TextView name;
+        public final TextView description;
+        public final TextView numPlayers;
 
-        public RoleViewHolder(TextView name, TextView description) {
+        public RoleViewHolder(TextView name, TextView description, TextView numPlayers, Button minusButton, Button plusButton) {
             this.name = name;
             this.description = description;
+            this.numPlayers = numPlayers;
+            this.minusButton = minusButton;
+            this.plusButton = plusButton;
         }
     }
 }
