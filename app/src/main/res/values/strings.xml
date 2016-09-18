@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Werewolves App</string>
+    <string name="app_name">Werewolves</string>
     <string name="werewolves">Werewolves</string>
     <string name="total_players">Players:</string>
     <string name="zero">0</string>
