@@ -1,11 +1,11 @@
 [
   {
-    "name": "Werewolf",
-    "description": "You get to have fun! Each day, you will attempt to decieve your fellow players. However, each night, you will get to pick a player to kill!"
+    "name": "Villager",
+    "description": "You are simply a lowly villager. You have no special abilities. Your only goal is to help your team find the werewolves"
   },
   {
-    "name": "Villager",
-    "description": "You are simply a lowly villager. You have no special abilities. Your only goal is to help your team find the others"
+    "name": "Werewolf",
+    "description": "You get to have fun! Each day, you will attempt to decieve your fellow players. However, each night, you will get to pick a player to kill!"
   },
   {
     "name": "Alpha Werewolf",
@@ -38,10 +38,6 @@
   {
     "name": "Drunk",
     "description": "As the drunk, you are still just a villager. BUT! If the wolves kill you, they will become disabled for the next night, as they are drunk off your insanely high BAC."
-  },
-  {
-    "name": "Fool",
-    "description": "The Fool is led to believe they are the Seer. Each night, when they choose to reveal a players role, they will be told a completely random role."
   },
   {
     "name": "Gunner",
