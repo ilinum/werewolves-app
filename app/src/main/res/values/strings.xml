@@ -14,4 +14,7 @@
     <string name="reset_button">Reset</string>
     <string name="show_role">Show role</string>
     <string name="slash">/</string>
+    <string name="credits">Credits</string>
+    <string name="exit">Exit</string>
+    <string name="credit">Icon made by Freepik from www.flaticon.com</string>
 </resources>
