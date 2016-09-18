@@ -50,6 +50,12 @@ public class StartActivity extends AppCompatActivity {
                 finish();
             }
         });
+        findViewById(R.id.resetButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                roleItemAdapter.reset();
+            }
+        });
     }
 
     @Override

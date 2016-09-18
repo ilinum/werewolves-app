@@ -121,6 +121,15 @@ public class RoleItemAdapter extends BaseAdapter {
         }
     }
 
+    public void reset() {
+        for (Role role : roles) {
+            role.resetNumPlayers();
+        }
+        totalPlayers = 0;
+        totalPlayersView.setText(String.valueOf(totalPlayers));
+        notifyDataSetChanged();
+    }
+
     private static class RoleViewHolder {
         public final Button minusButton;
         public final Button plusButton;

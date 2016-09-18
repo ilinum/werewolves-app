@@ -11,5 +11,5 @@
     <string name="intermediate_screen_message">Press \"Next\" when you\'re ready to see the role!</string>
     <string name="show_description">Show description</string>
     <string name="hide_description">Hide description</string>
-    <string name="reset">Reset</string>
+    <string name="reset_button">Reset</string>
 </resources>

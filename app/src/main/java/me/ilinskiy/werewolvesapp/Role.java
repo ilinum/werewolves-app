@@ -32,4 +32,8 @@ public class Role extends Player {
     public boolean isCollapsed() {
         return isCollapsed;
     }
+
+    public void resetNumPlayers() {
+        players = 0;
+    }
 }
