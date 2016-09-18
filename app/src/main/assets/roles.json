@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Werewolf",
+    "description": "The goal of the werewolves is to decide together on one villager to secretly kill off during the night, while posing as villagers during the day so they're not killed off themselves. One by one they'll kill off villagers and win when there are either the same number of villagers and werewolves left, or all the villagers have died. "
+  },
+
+  {
+    "name": "Villager",
+    "description": "The most commonplace role, a simple Villager, spends the game trying to root out who they believe the werewolves (and other villagers) are."
+  }
+]

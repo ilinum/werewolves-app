@@ -10,7 +10,40 @@
     tools:context="me.ilinskiy.werewolvesapp.StartActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:gravity="center"
+        android:id="@+id/werewolvesGameText"
+        android:textSize="30sp"
+        android:text="@string/werewolves" />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/werewolvesGameText"
+        android:id="@+id/roleList">
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/roleList"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:id="@+id/playersTotal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/total_players"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/zero"
+            android:paddingLeft="10dp"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+    </LinearLayout>
+
 </RelativeLayout>
