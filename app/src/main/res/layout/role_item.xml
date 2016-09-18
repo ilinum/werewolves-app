@@ -36,7 +36,7 @@
             android:layout_toEndOf="@id/name"
             android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
-            android:layout_height="80dp">
+            android:layout_height="60dp">
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
