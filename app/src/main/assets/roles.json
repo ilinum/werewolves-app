@@ -29,7 +29,7 @@
   },
   {
     "name": "Cupid",
-    "description": "Love is in the air. As Cupid, you will choose two players at the start of the game. These two players will become madly in love! If one of them dies, the other will die of sorrow :( Note: Lovers will know who each other are, but not be told their roles. If the lovers are the last two alive, they win, regardless of teams. If the lovers are on different teams (villager + wolf), and one team wins (wolf), the lover (villager) wins as well. TL;DR if both lovers are alive at the end, and at least one of them was on the winning team, they both win together"
+    "description": "Love is in the air. As Cupid, you will choose two players at the start of the game. These two players will become madly in love! If one of them dies, the other will die of sorrow. Lovers will know who each other are, but not be told their roles. If the lovers are the last two alive, they win, regardless of teams."
   },
   {
     "name": "Cursed",
