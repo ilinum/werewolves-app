@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +28,10 @@ public class StartActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ArrayList<Player> players = createPlayerList(roleItemAdapter.getRoles());
                 Collections.shuffle(players);
+                if (players.isEmpty()) {
+                    Toast.makeText(StartActivity.this, R.string.no_players_message, Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Intent intent = new Intent(StartActivity.this, RoleActivity.class);
                 Bundle extras = new Bundle();
                 extras.putInt(RoleActivity.INDEX_KEY, 0);
