@@ -64,13 +64,28 @@ public class RoleItemAdapter extends BaseAdapter {
             RoleViewHolder holder = new RoleViewHolder(nameView, descriptionView, rolePlayersView, minusButton, plusButton);
             convertView.setTag(holder);
         }
-        bindView(((RoleViewHolder) convertView.getTag()), role);
+        bindView(((RoleViewHolder) convertView.getTag()), role, convertView);
         return convertView;
     }
 
-    private void bindView(final RoleViewHolder vh, final Role role) {
+    private void bindView(final RoleViewHolder vh, final Role role, View view) {
         vh.name.setText(role.name);
-        vh.description.setText(role.description);
+        if (role.isCollapsed()) {
+            vh.description.setText("");
+        } else {
+            vh.description.setText(role.description);
+        }
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (role.isCollapsed()) {
+                    vh.description.setText(role.description);
+                } else {
+                    vh.description.setText("");
+                }
+                role.setCollapsed(!role.isCollapsed());
+            }
+        });
         vh.numPlayers.setText(String.valueOf(role.getPlayers()));
         vh.minusButton.setOnClickListener(new View.OnClickListener() {
             @Override

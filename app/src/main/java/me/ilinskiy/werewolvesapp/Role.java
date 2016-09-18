@@ -5,6 +5,7 @@ package me.ilinskiy.werewolvesapp;
  */
 public class Role extends Player {
     private int players = 0;
+    private boolean isCollapsed = true;
 
     public Role(String name, String description) {
         super(name, description);
@@ -22,5 +23,13 @@ public class Role extends Player {
         if (players > 0) {
             players--;
         }
+    }
+
+    public void setCollapsed(boolean collapsed) {
+        isCollapsed = collapsed;
+    }
+
+    public boolean isCollapsed() {
+        return isCollapsed;
     }
 }
