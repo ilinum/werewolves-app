@@ -13,6 +13,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
+    private static final String ROLES_KEY = "roles";
+    private ArrayList<Role> roles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +23,14 @@ public class StartActivity extends AppCompatActivity {
 
         ListView roleList = (ListView) findViewById(R.id.roleList);
         TextView playerTotalText = (TextView) findViewById(R.id.playersTotalText);
-        List<Role> roleLoader = RoleLoader.loadRoles(getAssets());
-        final RoleItemAdapter roleItemAdapter = new RoleItemAdapter(this, roleLoader, playerTotalText);
+        if (savedInstanceState != null) {
+            //noinspection unchecked
+            roles = (ArrayList<Role>) savedInstanceState.getSerializable(ROLES_KEY);
+        }
+        if (roles == null) {
+            roles = RoleLoader.loadRoles(getAssets());
+        }
+        final RoleItemAdapter roleItemAdapter = new RoleItemAdapter(this, roles, playerTotalText);
         roleList.setAdapter(roleItemAdapter);
         findViewById(R.id.startButton).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +50,12 @@ public class StartActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(ROLES_KEY, roles);
     }
 
     private ArrayList<Player> createPlayerList(List<Role> roles) {

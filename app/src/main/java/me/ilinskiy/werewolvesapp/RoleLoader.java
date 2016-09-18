@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Svyatoslav Ilinskiy on 17.09.16
@@ -19,7 +18,7 @@ public class RoleLoader {
     public static final String DESCRIPTION_PROPERTY = "description";
     private static final String LOG_TAG = "RoleLoader";
 
-    public static List<Role> loadRoles(AssetManager assetManager) {
+    public static ArrayList<Role> loadRoles(AssetManager assetManager) {
         try (InputStream is = roleInputStream(assetManager)) {
             return readJSON(is);
         } catch (IOException e) {
@@ -29,14 +28,14 @@ public class RoleLoader {
         }
     }
 
-    private static List<Role> readJSON(InputStream in) throws IOException {
+    private static ArrayList<Role> readJSON(InputStream in) throws IOException {
         try (JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"))) {
             return readRolesIn(reader);
         }
     }
 
-    private static List<Role> readRolesIn(JsonReader reader) throws IOException {
-        List<Role> roles = new ArrayList<>();
+    private static ArrayList<Role> readRolesIn(JsonReader reader) throws IOException {
+        ArrayList<Role> roles = new ArrayList<>();
         reader.beginArray();
         while (reader.hasNext()) {
             Role r = readRole(reader);

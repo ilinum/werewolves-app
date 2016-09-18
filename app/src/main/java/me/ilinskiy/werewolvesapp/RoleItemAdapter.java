@@ -23,6 +23,9 @@ public class RoleItemAdapter extends BaseAdapter {
         this.roles = roles;
         inflater = LayoutInflater.from(context);
         this.totalPlayersView = totalPlayerNumberView;
+        for (Role role : roles) {
+            totalPlayers += role.getPlayers();
+        }
         totalPlayerNumberView.setText(String.valueOf(totalPlayers));
     }
 
