@@ -1,10 +1,62 @@
 [
   {
     "name": "Werewolf",
-    "description": "The goal of the werewolves is to decide together on one villager to secretly kill off during the night, while posing as villagers during the day so they're not killed off themselves. One by one they'll kill off villagers and win when there are either the same number of villagers and werewolves left, or all the villagers have died. "
+    "description": "You get to have fun! Each day, you will attempt to decieve your fellow players. However, each night, you will get to pick a player to kill!"
   },
   {
     "name": "Villager",
-    "description": "The most commonplace role, a simple Villager, spends the game trying to root out who they believe the werewolves (and other villagers) are."
+    "description": "You are simply a lowly villager. You have no special abilities. Your only goal is to help your team find the others"
+  },
+  {
+    "name": "Alpha Werewolf",
+    "description": "This role, while first and foremost taking on all the elements of a regular Werewolf throughout the game, also has the additional burden of saying the word “Werewolf” at least once during the day. If the Alpha Werewolf fails to say “Werewolf”, they automatically die the next night."
+  },
+  {
+    "name": "Apprentice Seer",
+    "description": "For now, you are a normal villager. However, if the seer dies, you will become the new seer"
+  },
+  {
+    "name": "Beholder",
+    "description": "As the Beholder, your role is simple - you will always know who the Seer is"
+  },
+  {
+    "name": "Cultist",
+    "description": "As a cultist, it is your goal to convert all other players (except wolves and serial killer) to your cult. If at the end of the game, all living players are cultist - the cult wins"
+  },
+  {
+    "name": "Cultist Hunter",
+    "description": "Your job is to hunt the Cult. If the cult attacks you, their newest member will die. Each night you may pick a player to 'hunt' - if they are a cultist, they will die."
+  },
+  {
+    "name": "Cupid",
+    "description": "Love is in the air. As Cupid, you will choose two players at the start of the game. These two players will become madly in love! If one of them dies, the other will die of sorrow :( Note: Lovers will know who each other are, but not be told their roles. If the lovers are the last two alive, they win, regardless of teams. If the lovers are on different teams (villager + wolf), and one team wins (wolf), the lover (villager) wins as well. TL;DR if both lovers are alive at the end, and at least one of them was on the winning team, they both win together"
+  },
+  {
+    "name": "Cursed",
+    "description": "As the cursed, you are a normal villager... until the wolves bite you. Once they do, you will become a wolf as well!"
+  },
+  {
+    "name": "Drunk",
+    "description": "As the drunk, you are still just a villager. BUT! If the wolves kill you, they will become disabled for the next night, as they are drunk off your insanely high BAC."
+  },
+  {
+    "name": "Fool",
+    "description": "The Fool is led to believe they are the Seer. Each night, when they choose to reveal a players role, they will be told a completely random role."
+  },
+  {
+    "name": "Gunner",
+    "description": "As the gunner, you are given 2 silver bullets at the beginning of the game. Each day, you will have the chance to shoot another player. Once you do, everyone will know you are the gunner!"
+  },
+  {
+    "name": "Seer",
+    "description": "You are the Seer. In this role, each night, you may choose a player, and have their role revealed to you. Admit to your role wisely: If you reveal you are the seer, the wolves will try to kill you!"
+  },
+  {
+    "name": "Tanner",
+    "description": "The Tanners goal is simple: Get Lynched. If the Tanner gets lynched, he wins, period. Everyone else loses."
+  },
+  {
+    "name": "Traitor",
+    "description": "You are a traitorous bastard. If you survive long enough for all the wolves to die, you will become a werewolf, ready to kill your former teammates in the night!"
   }
 ]
