@@ -9,4 +9,6 @@
     <string name="next_button">Next</string>
     <string name="no_players_message">Can\'t play with no players</string>
     <string name="intermediate_screen_message">Press \"Next\" when you\'re ready to see the role!</string>
+    <string name="show_description">Show description</string>
+    <string name="hide_description">Hide description</string>
 </resources>

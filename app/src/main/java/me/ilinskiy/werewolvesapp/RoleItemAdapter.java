@@ -61,7 +61,9 @@ public class RoleItemAdapter extends BaseAdapter {
             TextView rolePlayersView = (TextView) convertView.findViewById(R.id.rolePlayers);
             Button minusButton = (Button) convertView.findViewById(R.id.minusButton);
             Button plusButton = (Button) convertView.findViewById(R.id.plusButton);
-            RoleViewHolder holder = new RoleViewHolder(nameView, descriptionView, rolePlayersView, minusButton, plusButton);
+            TextView showDescription = (TextView) convertView.findViewById(R.id.showDescriptionTextView);
+            RoleViewHolder holder = new RoleViewHolder(nameView, descriptionView, rolePlayersView,
+                    minusButton, plusButton, showDescription);
             convertView.setTag(holder);
         }
         bindView(((RoleViewHolder) convertView.getTag()), role, convertView);
@@ -70,20 +72,23 @@ public class RoleItemAdapter extends BaseAdapter {
 
     private void bindView(final RoleViewHolder vh, final Role role, View view) {
         vh.name.setText(role.name);
+        vh.description.setText(role.description);
         if (role.isCollapsed()) {
-            vh.description.setText("");
+            vh.description.setVisibility(View.GONE);
         } else {
-            vh.description.setText(role.description);
+            vh.description.setVisibility(View.VISIBLE);
         }
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (role.isCollapsed()) {
-                    vh.description.setText(role.description);
-                } else {
-                    vh.description.setText("");
-                }
                 role.setCollapsed(!role.isCollapsed());
+                if (role.isCollapsed()) {
+                    vh.showDescriptionView.setText(R.string.show_description);
+                    vh.description.setVisibility(View.GONE);
+                } else {
+                    vh.showDescriptionView.setText(R.string.hide_description);
+                    vh.description.setVisibility(View.VISIBLE);
+                }
             }
         });
         vh.numPlayers.setText(String.valueOf(role.getPlayers()));
@@ -119,16 +124,19 @@ public class RoleItemAdapter extends BaseAdapter {
     private static class RoleViewHolder {
         public final Button minusButton;
         public final Button plusButton;
+        public final TextView showDescriptionView;
         public final TextView name;
         public final TextView description;
         public final TextView numPlayers;
 
-        public RoleViewHolder(TextView name, TextView description, TextView numPlayers, Button minusButton, Button plusButton) {
+        public RoleViewHolder(TextView name, TextView description, TextView numPlayers,
+                              Button minusButton, Button plusButton, TextView showDescriptionView) {
             this.name = name;
             this.description = description;
             this.numPlayers = numPlayers;
             this.minusButton = minusButton;
             this.plusButton = plusButton;
+            this.showDescriptionView = showDescriptionView;
         }
     }
 }
