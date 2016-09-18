@@ -12,6 +12,8 @@ import java.util.ArrayList;
 public class RoleActivity extends AppCompatActivity {
 
     public static final String PLAYERS_KEY = "players";
+    public static final String INDEX_KEY = "index";
+    public static final String ROLE_SHOWN_KEY = "roleShown";
     private TextView roleName;
     private TextView roleDescription;
     private int index;
@@ -24,15 +26,22 @@ public class RoleActivity extends AppCompatActivity {
 
         Intent startIntent = getIntent();
         final Bundle extras = startIntent.getExtras();
-        index = 0;
         roleName = (TextView) findViewById(R.id.role);
         roleDescription = (TextView) findViewById(R.id.description);
-        roleShown = false;
         //noinspection unchecked
         final ArrayList<Player> players = (ArrayList<Player>) extras.getSerializable(PLAYERS_KEY);
         if (players == null) {
             finish();
             return;
+        }
+        index = 0;
+        roleShown = false;
+        if (savedInstanceState != null) {
+            index = savedInstanceState.getInt(INDEX_KEY);
+            roleShown = savedInstanceState.getBoolean(ROLE_SHOWN_KEY);
+            if (roleShown) {
+                setRoleText(players.get(index));
+            }
         }
         final Button nextButton = (Button) findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +70,13 @@ public class RoleActivity extends AppCompatActivity {
                 setRoleText(players.get(index));
             }
         });
+    }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(INDEX_KEY, index);
+        outState.putBoolean(ROLE_SHOWN_KEY, roleShown);
     }
 
     private void setRoleToEmptyText() {
