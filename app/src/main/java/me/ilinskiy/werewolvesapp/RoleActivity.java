@@ -2,6 +2,7 @@ package me.ilinskiy.werewolvesapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -35,8 +36,6 @@ public class RoleActivity extends AppCompatActivity {
 
         roleName = (TextView) findViewById(R.id.role);
         roleDescription = (TextView) findViewById(R.id.description);
-        final TextView indexView = (TextView) findViewById(R.id.indexTextView);
-        TextView totalPlayersView = (TextView) findViewById(R.id.totalPlayerTextView);
         index = 0;
         roleShown = false;
         if (savedInstanceState != null) {
@@ -46,8 +45,7 @@ public class RoleActivity extends AppCompatActivity {
                 setRoleText(players.get(index));
             }
         }
-        indexView.setText(String.valueOf(index + 1));
-        totalPlayersView.setText(String.valueOf(players.size()));
+        setActionBarText(index, players.size());
         final Button nextButton = (Button) findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +63,7 @@ public class RoleActivity extends AppCompatActivity {
                 if (index < players.size()) {
                     setRoleToEmptyText();
                     nextButton.setText(R.string.show_role);
-                    indexView.setText(String.valueOf(index + 1));
+                    setActionBarText(index, players.size());
                 } else {
                     finish();
                 }
@@ -76,6 +74,14 @@ public class RoleActivity extends AppCompatActivity {
                 setRoleText(players.get(index));
             }
         });
+    }
+
+    private void setActionBarText(int index, int total) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            String title = "Player " + (index + 1) + " out of " + total;
+            actionBar.setTitle(title);
+        }
     }
 
     @Override
