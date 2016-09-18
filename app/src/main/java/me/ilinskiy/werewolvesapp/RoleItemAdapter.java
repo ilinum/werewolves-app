@@ -13,16 +13,6 @@ import java.util.List;
  * Created by Svyatoslav Ilinskiy on 16.09.16
  */
 public class RoleItemAdapter extends BaseAdapter {
-    private static class RoleViewHolder {
-        public TextView name;
-        public TextView description;
-
-        public RoleViewHolder(TextView name, TextView description) {
-            this.name = name;
-            this.description = description;
-        }
-    }
-
     private final LayoutInflater inflater;
     private List<Role> roles;
 
@@ -65,5 +55,15 @@ public class RoleItemAdapter extends BaseAdapter {
     private void bindView(RoleViewHolder vh, Role role) {
         vh.name.setText(role.name);
         vh.description.setText(role.description);
+    }
+
+    private static class RoleViewHolder {
+        public TextView name;
+        public TextView description;
+
+        public RoleViewHolder(TextView name, TextView description) {
+            this.name = name;
+            this.description = description;
+        }
     }
 }
