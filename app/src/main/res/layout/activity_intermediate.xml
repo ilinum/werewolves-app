@@ -20,6 +20,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        style="?android:attr/buttonBarButtonStyle"
         android:id="@+id/nextButton"
         android:layout_alignParentBottom="true"
         android:text="@string/next_button"/>
