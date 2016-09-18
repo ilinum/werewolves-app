@@ -26,14 +26,17 @@ public class RoleActivity extends AppCompatActivity {
 
         Intent startIntent = getIntent();
         final Bundle extras = startIntent.getExtras();
-        roleName = (TextView) findViewById(R.id.role);
-        roleDescription = (TextView) findViewById(R.id.description);
         //noinspection unchecked
         final ArrayList<Player> players = (ArrayList<Player>) extras.getSerializable(PLAYERS_KEY);
         if (players == null) {
             finish();
             return;
         }
+
+        roleName = (TextView) findViewById(R.id.role);
+        roleDescription = (TextView) findViewById(R.id.description);
+        final TextView indexView = (TextView) findViewById(R.id.indexTextView);
+        TextView totalPlayersView = (TextView) findViewById(R.id.totalPlayerTextView);
         index = 0;
         roleShown = false;
         if (savedInstanceState != null) {
@@ -43,6 +46,8 @@ public class RoleActivity extends AppCompatActivity {
                 setRoleText(players.get(index));
             }
         }
+        indexView.setText(String.valueOf(index + 1));
+        totalPlayersView.setText(String.valueOf(players.size()));
         final Button nextButton = (Button) findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +65,7 @@ public class RoleActivity extends AppCompatActivity {
                     index++;
                     setRoleToEmptyText();
                     nextButton.setText(R.string.show_role);
+                    indexView.setText(String.valueOf(index + 1));
                 } else {
                     finish();
                 }

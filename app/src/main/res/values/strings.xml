@@ -13,4 +13,5 @@
     <string name="hide_description">Hide description</string>
     <string name="reset_button">Reset</string>
     <string name="show_role">Show role</string>
+    <string name="slash">/</string>
 </resources>

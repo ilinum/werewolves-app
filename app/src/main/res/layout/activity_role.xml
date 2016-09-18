@@ -21,8 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/role"
         android:textSize="20sp" />
-
-
     <LinearLayout
         android:id="@+id/buttonBar"
         android:layout_width="match_parent"
@@ -54,5 +52,30 @@
                 android:textColor="@color/colorPrimaryDark" />
         </LinearLayout>
 
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_above="@id/buttonBar"
+        android:paddingBottom="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/indexTextView"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/slash"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/totalPlayerTextView"
+            android:textSize="20sp" />
     </LinearLayout>
 </RelativeLayout>
