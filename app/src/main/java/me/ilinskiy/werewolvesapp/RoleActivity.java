@@ -36,7 +36,7 @@ public class RoleActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent leaveIntent;
                 if (players != null && (idx + 1) < players.size()) {
-                    leaveIntent = new Intent(RoleActivity.this, RoleActivity.class);
+                    leaveIntent = new Intent(RoleActivity.this, IntermediateActivity.class);
                     extras.putInt(INDEX_KEY, idx + 1);
                     leaveIntent.putExtras(extras);
                 } else {
