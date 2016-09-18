@@ -61,8 +61,8 @@ public class RoleActivity extends AppCompatActivity {
             }
 
             private void next() {
-                if ((index + 1) < players.size()) {
-                    index++;
+                index++;
+                if (index < players.size()) {
                     setRoleToEmptyText();
                     nextButton.setText(R.string.show_role);
                     indexView.setText(String.valueOf(index + 1));
