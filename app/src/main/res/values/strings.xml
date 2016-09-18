@@ -12,4 +12,5 @@
     <string name="show_description">Show description</string>
     <string name="hide_description">Hide description</string>
     <string name="reset_button">Reset</string>
+    <string name="show_role">Show role</string>
 </resources>

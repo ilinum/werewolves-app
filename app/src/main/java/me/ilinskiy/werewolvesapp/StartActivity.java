@@ -41,13 +41,11 @@ public class StartActivity extends AppCompatActivity {
                     Toast.makeText(StartActivity.this, R.string.no_players_message, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Intent intent = new Intent(StartActivity.this, IntermediateActivity.class);
+                Intent intent = new Intent(StartActivity.this, RoleActivity.class);
                 Bundle extras = new Bundle();
-                extras.putInt(RoleActivity.INDEX_KEY, 0);
                 extras.putSerializable(RoleActivity.PLAYERS_KEY, players);
                 intent.putExtras(extras);
                 startActivity(intent);
-                finish();
             }
         });
         findViewById(R.id.resetButton).setOnClickListener(new View.OnClickListener() {

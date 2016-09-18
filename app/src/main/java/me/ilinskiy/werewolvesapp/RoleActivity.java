@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -11,7 +12,10 @@ import java.util.ArrayList;
 public class RoleActivity extends AppCompatActivity {
 
     public static final String PLAYERS_KEY = "players";
-    public static final String INDEX_KEY = "index";
+    private TextView roleName;
+    private TextView roleDescription;
+    private int index;
+    private boolean roleShown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,32 +24,53 @@ public class RoleActivity extends AppCompatActivity {
 
         Intent startIntent = getIntent();
         final Bundle extras = startIntent.getExtras();
-        Integer index = (Integer) extras.get(INDEX_KEY);
-        if (index == null) {
-            index = Integer.MAX_VALUE;
+        index = 0;
+        roleName = (TextView) findViewById(R.id.role);
+        roleDescription = (TextView) findViewById(R.id.description);
+        roleShown = false;
+        //noinspection unchecked
+        final ArrayList<Player> players = (ArrayList<Player>) extras.getSerializable(PLAYERS_KEY);
+        if (players == null) {
+            finish();
+            return;
         }
-        final int idx = index;
-        @SuppressWarnings("unchecked") final ArrayList<Player> players = (ArrayList<Player>) extras.getSerializable(PLAYERS_KEY);
-        if (players != null) {
-            Player role = players.get(idx);
-            ((TextView) findViewById(R.id.role)).setText(role.name);
-            ((TextView) findViewById(R.id.description)).setText(role.description);
-        }
-        findViewById(R.id.nextButton).setOnClickListener(new View.OnClickListener() {
+        final Button nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent leaveIntent;
-                if (players != null && (idx + 1) < players.size()) {
-                    leaveIntent = new Intent(RoleActivity.this, IntermediateActivity.class);
-                    extras.putInt(INDEX_KEY, idx + 1);
-                    leaveIntent.putExtras(extras);
+                if (roleShown) {
+                    next();
                 } else {
-                    leaveIntent = new Intent(RoleActivity.this, StartActivity.class);
+                    show();
                 }
-                startActivity(leaveIntent);
-                finish();
+                roleShown = !roleShown;
+            }
+
+            private void next() {
+                if ((index + 1) < players.size()) {
+                    index++;
+                    setRoleToEmptyText();
+                } else {
+                    finish();
+                }
+            }
+
+            private void show() {
+                nextButton.setText(R.string.next_button);
+                setRoleText(players.get(index));
             }
         });
 
+    }
+
+    private void setRoleToEmptyText() {
+        roleName.setText("");
+        roleDescription.setText("");
+
+    }
+
+    private void setRoleText(Player role) {
+        roleName.setText(role.name);
+        roleDescription.setText(role.description);
     }
 }
