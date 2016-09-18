@@ -13,6 +13,15 @@ import java.util.List;
  * Created by Svyatoslav Ilinskiy on 16.09.16
  */
 public class RoleItemAdapter extends BaseAdapter {
+    private static class RoleViewHolder {
+        public TextView name;
+        public TextView description;
+
+        public RoleViewHolder(TextView name, TextView description) {
+            this.name = name;
+            this.description = description;
+        }
+    }
 
     private final LayoutInflater inflater;
     private List<Role> roles;
@@ -45,13 +54,16 @@ public class RoleItemAdapter extends BaseAdapter {
         }
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.role_item, parent, false);
+            TextView nameView = (TextView) convertView.findViewById(R.id.name);
+            TextView descriptionView = (TextView) convertView.findViewById(R.id.description);
+            convertView.setTag(new RoleViewHolder(nameView, descriptionView));
         }
-        bindView(convertView, role);
+        bindView(((RoleViewHolder) convertView.getTag()), role);
         return convertView;
     }
 
-    private void bindView(View convertView, Role role) {
-        ((TextView) convertView.findViewById(R.id.name)).setText(role.name);
-        ((TextView) convertView.findViewById(R.id.description)).setText(role.description);
+    private void bindView(RoleViewHolder vh, Role role) {
+        vh.name.setText(role.name);
+        vh.description.setText(role.description);
     }
 }
